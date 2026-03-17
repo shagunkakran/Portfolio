@@ -1,0 +1,95 @@
+:root {
+    --bg-light: #FFF5F7;        /* White-Pinkish */
+    --bg-dark: #040007;         /* Jet Black */
+    --accent-pink: #DB2777;     /* Hot Pink */
+    --accent-lavender: #D8B4FE; /* Lavender */
+    --card-light: rgba(255, 255, 255, 0.8);
+    --card-dark: rgba(15, 23, 42, 0.6);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: #1E293B;
+    scroll-behavior: smooth;
+    transition: background-color 0.4s ease;
+}
+
+.dark body {
+    background-color: var(--bg-dark);
+    color: #FDF2F8;
+}
+
+.font-code { font-family: 'Fira Code', monospace; }
+
+/* Navigation Glassmorphism */
+nav {
+    background-color: #fff5f7b3;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(219, 39, 119, 0.1);
+}
+
+.dark nav {
+    background-color: rgba(2, 6, 23, 0.7);
+    border-bottom: 1px solid rgba(216, 180, 254, 0.1);
+}
+
+.nav-link::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -4px; left: 0;
+    background-color: var(--accent-pink); transition: width 0.3s ease;
+}
+.dark .nav-link::after { background-color: var(--accent-lavender); }
+.nav-link:hover::after { width: 100%; }
+
+.section-heading { 
+    display: inline-block; 
+    border-bottom: 4px solid var(--accent-pink); 
+    padding-bottom: 4px; 
+}
+.dark .section-heading { border-color: var(--accent-lavender); }
+
+/* Cards Styling */
+.card {
+    background-color: var(--card-light);
+    border: 1px solid rgba(219, 39, 119, 0.1);
+    backdrop-filter: blur(4px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dark .card {
+    background-color: var(--card-dark);
+    border: 1px solid rgba(216, 180, 254, 0.05);
+}
+
+.card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(219, 39, 119, 0.1);
+    border-color: var(--accent-pink);
+}
+
+.dark .card:hover {
+    box-shadow: 0 20px 40px rgba(216, 180, 254, 0.05);
+    border-color: var(--accent-lavender);
+}
+
+/* Filter Buttons */
+.filter-btn.active {
+    background-color: var(--accent-pink) !important;
+    color: white !important;
+}
+.dark .filter-btn.active {
+    background-color: var(--accent-lavender) !important;
+    color: #1E1B4B !important;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+}
+.toast.show { transform: translate(-50%, 0); }

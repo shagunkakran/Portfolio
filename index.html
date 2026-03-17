@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKC | Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        lavender: { 300: '#D8B4FE', 400: '#E9D5FF', 500: '#A855F7' },
+                        pinkish: { 50: '#FFF5F7', 100: '#FFE4E6', 600: '#DB2777' }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="antialiased selection:bg-pink-200 dark:selection:bg-purple-900">
+    <div id="three-bg" class="fixed top-0 left-0 w-full h-full z-[-1]"></div>
+
+    <header id="home" class="relative">
+        <nav class="sticky top-0 z-50">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#home" class="font-bold text-2xl font-code text-pink-600 dark:text-lavender-300">SKC</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#experience" class="nav-link relative text-slate-700 dark:text-pink-100 hover:text-pink-600 dark:hover:text-lavender-300 transition-colors">Experience</a>
+                    <a href="#projects" class="nav-link relative text-slate-700 dark:text-pink-100 hover:text-pink-600 dark:hover:text-lavender-300 transition-colors">Projects</a>
+                    <a href="#skills" class="nav-link relative text-slate-700 dark:text-pink-100 hover:text-pink-600 dark:hover:text-lavender-300 transition-colors">Skills</a>
+                    <a href="#contact" class="nav-link relative text-slate-700 dark:text-pink-100 hover:text-pink-600 dark:hover:text-lavender-300 transition-colors">Contact</a>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 rounded-full flex items-center justify-center text-pink-600 dark:text-lavender-300 hover:bg-pink-100 dark:hover:bg-purple-900/30 transition-all">
+                    <svg id="theme-icon-sun" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-moon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="container mx-auto px-6 py-24 md:py-32 text-center relative z-10">
+            <h1 class="gsap-reveal text-4xl md:text-6xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight">Shagun Kakran Chaudhary</h1>
+            <p class="gsap-reveal mt-4 text-lg md:text-xl text-pink-600 dark:text-lavender-400 font-bold tracking-wide">Software Developer & DSA Enthusiast</p>
+            <p class="gsap-reveal mt-6 max-w-2xl mx-auto text-slate-600 dark:text-pink-100/80">
+                Dedicated computer science student passionate about leveraging emerging technologies to solve complex challenges in software development.
+            </p>
+            <div class="gsap-reveal mt-8 flex justify-center items-center space-x-4">
+                <a href="https://github.com/shagunkakran" target="_blank" class="text-pink-600 dark:text-lavender-300 hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/shagunkakran/" target="_blank" class="text-pink-600 dark:text-lavender-300 hover:scale-110 transition-transform">
+                     <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-6 space-y-24">
+            <section id="stats" class="gsap-reveal">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card rounded-2xl p-8 text-center">
+                        <p class="text-5xl font-bold text-pink-600 dark:text-lavender-400" id="github-repos">--</p>
+                        <p class="mt-2 text-slate-600 dark:text-pink-100 font-medium">Public Repositories</p>
+                    </div>
+                    <div class="card rounded-2xl p-8 text-center">
+                        <p class="text-5xl font-bold text-pink-600 dark:text-lavender-400" id="github-followers">--</p>
+                        <p class="mt-2 text-slate-600 dark:text-pink-100 font-medium">GitHub Followers</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="gsap-reveal">
+                <h2 class="section-heading text-3xl font-bold text-slate-800 dark:text-white mb-12">Experience</h2>
+                <div id="experience-container" class="relative"></div>
+            </section>
+
+            <section id="projects" class="gsap-reveal">
+                <h2 class="section-heading text-3xl font-bold text-slate-800 dark:text-white mb-12">Featured Projects</h2>
+                <div id="project-filters" class="flex flex-wrap gap-3 mb-8"></div>
+                <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+            </section>
+            
+            <section id="skills" class="gsap-reveal">
+                <h2 class="section-heading text-3xl font-bold text-slate-800 dark:text-white mb-12">Technical Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+                    <div class="skill-item p-4 rounded-xl transition-all hover:bg-pink-100/50 dark:hover:bg-purple-900/20">
+                        <div class="text-4xl mb-2">💻</div><p class="font-medium dark:text-pink-100">Web Development</p>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl transition-all hover:bg-pink-100/50 dark:hover:bg-purple-900/20">
+                        <div class="text-4xl mb-2">🧠</div><p class="font-medium dark:text-pink-100">Generative AI</p>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl transition-all hover:bg-pink-100/50 dark:hover:bg-purple-900/20">
+                        <div class="text-4xl mb-2">📊</div><p class="font-medium dark:text-pink-100">Data Structures</p>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl transition-all hover:bg-pink-100/50 dark:hover:bg-purple-900/20">
+                        <div class="text-4xl mb-2">🧩</div><p class="font-medium dark:text-pink-100">OOPS</p>
+                    </div>
+                    <div class="skill-item p-4 rounded-xl transition-all hover:bg-pink-100/50 dark:hover:bg-purple-900/20">
+                        <div class="text-4xl mb-2">🐬</div><p class="font-medium dark:text-pink-100">SQL</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="gsap-reveal pb-20">
+                <h2 class="section-heading text-3xl font-bold text-slate-800 dark:text-white mb-12">Get In Touch</h2>
+                <div class="card rounded-2xl p-8 max-w-3xl mx-auto shadow-xl">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+    
+    <input type="hidden" name="access_key" value="ed4e157f-3abb-4f37-a71b-7caa78addf1b">
+
+    <input type="hidden" name="subject" value="New Submission from Portfolio">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <input type="text" name="name" placeholder="Name" 
+               class="w-full p-4 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-pink-200 dark:border-purple-800 focus:ring-2 focus:ring-pink-500 outline-none transition-all dark:text-white" 
+               required>
+        
+        <input type="email" name="email" placeholder="Email" 
+               class="w-full p-4 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-pink-200 dark:border-purple-800 focus:ring-2 focus:ring-pink-500 outline-none transition-all dark:text-white" 
+               required>
+    </div>
+
+    <textarea name="message" placeholder="Message" rows="5" 
+              class="w-full p-4 rounded-xl bg-white/50 dark:bg-slate-800/50 border border-pink-200 dark:border-purple-800 focus:ring-2 focus:ring-pink-500 outline-none transition-all dark:text-white" 
+              required></textarea>
+    
+    <div class="text-center">
+        <button type="submit" 
+                class="py-4 px-12 rounded-xl bg-pink-600 text-white font-bold hover:bg-pink-700 hover:shadow-lg hover:shadow-pink-500/30 transition-all active:scale-95">
+            Send Message
+        </button>
+    </div>
+</form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="text-center py-10 border-t border-pink-100 dark:border-purple-900/50">
+        <p class="text-slate-500 dark:text-lavender-400 font-code text-sm">&copy; 2026 Shagun Kakran Chaudhary. Built with ❤️.</p>
+    </footer>
+    
+    <div id="toast-notification" class="toast p-4 rounded-xl shadow-2xl text-white font-medium"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
