@@ -121,6 +121,10 @@ const App = {
                  { title: "SkillSwap", description: "Interactive skill exchange platform.", category: "JS", github: "https://github.com/shagunkakran/SkillSwap",
     live: "#" },
                  { title: "Astroverse", description: "AR/VR based gameplay.", category: "AR/VR", github: "#",
+    live: "#"  },
+                  { title: "Gig Shield AI", description: "Financial Protection Platform for Gig workers.", category: "AI", github: "#",
+    live: "#"  },
+                  { title: "Bondify", description: "Smart Society Interaction Platform.", category: "AI", github: "#",
     live: "#"  }
              ];
            
