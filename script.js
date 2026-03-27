@@ -115,11 +115,15 @@ const App = {
         init() {
             this.container = document.getElementById('project-grid');
             this.filtersContainer = document.getElementById('project-filters');
-            this.data = [
-                { title: "MindSage", description: "AI-powered content analysis platform.", category: "AI/ML" },
-                { title: "SkillSwap", description: "Interactive skill exchange platform.", category: "JS" },
-                { title: "Astroverse", description: "AR/VR based gameplay.", category: "AR/VR" }
-            ];
+             this.data = [
+                { title: "MindSage", description: "AI-powered content analysis platform.", category: "AI", github: "https://github.com/shagunkakran/demo1",
+    live: "https://shagunkakran.github.io/demo1/" },
+                 { title: "SkillSwap", description: "Interactive skill exchange platform.", category: "JS", github: "https://github.com/shagunkakran/SkillSwap",
+    live: "#" },
+                 { title: "Astroverse", description: "AR/VR based gameplay.", category: "AR/VR", github: "#",
+    live: "#"  }
+             ];
+           
             this.renderFilters();
             this.renderProjects('all');
         },
@@ -146,6 +150,17 @@ const App = {
                     </div>
                     <h3 class="text-xl font-bold text-slate-800 dark:text-white group-hover:text-pink-600 transition-colors">${p.title}</h3>
                     <p class="mt-2 text-slate-600 dark:text-pink-100/70 text-sm">${p.description}</p>
+                    <div class="mt-4 flex gap-4">
+  <a href="${p.github}" target="_blank" 
+     class="text-sm font-bold text-pink-600 hover:underline">
+     🔗 GitHub
+  </a>
+
+  <a href="${p.live}" target="_blank" 
+     class="text-sm font-bold text-pink-600 hover:underline">
+     🚀 Live
+  </a>
+</div>
                 </div>
             `).join('');
         }
@@ -180,7 +195,7 @@ const App = {
     contactForm: {
     init() {
         this.form = document.getElementById('contact-form');
-        this.toast = document.getElementById('toast');
+        this.toast = document.getElementById('toast-notification');
         
         if (!this.form) return;
 
