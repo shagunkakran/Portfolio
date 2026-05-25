@@ -116,16 +116,14 @@ const App = {
             this.container = document.getElementById('project-grid');
             this.filtersContainer = document.getElementById('project-filters');
              this.data = [
-                { title: "MindSage", description: "AI-powered content analysis platform.", category: "AI", github: "https://github.com/shagunkakran/demo1",
-    live: "https://shagunkakran.github.io/demo1/" },
+                { title: "MindSage", description: "AI-powered content analysis platform.", category: "AI", github: "https://github.com/shagunkakran/Mind_Sage",
+    live: "https://mind-sage-mmv8.onrender.com" },
                  { title: "SkillSwap", description: "Interactive skill exchange platform.", category: "JS", github: "https://github.com/shagunkakran/SkillSwap",
     live: "#" },
-                 { title: "Astroverse", description: "AR/VR based gameplay.", category: "AR/VR", github: "#",
-    live: "#"  },
-                  { title: "Gig Shield AI", description: "Financial Protection Platform for Gig workers.", category: "AI", github: "#",
-    live: "#"  },
-                  { title: "Bondify", description: "Smart Society Interaction Platform.", category: "AI", github: "#",
-    live: "#"  }
+                 { title: "DESVER : Gig Shield AI", description: "Financial Protection Platform for Gig workers.", category: "AI", github: "https://github.com/shagunkakran/Desver---GigShield-AI-",
+    live: "https://riderparadise-meehsus.vercel.app/"  },
+                 { title: "Astroverse", description: "AR/VR based gameplay.", category: "AR/VR"  },
+                  { title: "Bondify", description: "Smart Society Interaction Platform.", category: "AI"  }
              ];
            
             this.renderFilters();
